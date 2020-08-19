@@ -1,0 +1,28 @@
+{{- if .Values.mesh.enabled -}}
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ include "starter-kit.fullname" . }}
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - inventory-gateway
+  http:
+  - match:
+    - uri:
+        exact: /health
+    route:
+    - destination:
+        host: {{ include "starter-kit.fullname" . }}
+        port:
+          number: {{ .Values.service.port }}  
+  - match:
+    - uri:
+        exact: /
+    route:
+    - destination:
+        host: {{ include "starter-kit.fullname" . }}
+        port:
+          number: {{ .Values.service.port }}                
+{{- end}}        
