@@ -19,7 +19,7 @@ spec:
           number: {{ .Values.service.port }}  
   - match:
     - uri:
-        exact: /
+        exact: /stock-items
     route:
     - destination:
         host: {{ include "starter-kit.fullname" . }}
