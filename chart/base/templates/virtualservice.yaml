@@ -11,7 +11,7 @@ spec:
   http:
   - match:
     - uri:
-        exact: /health-{{ include ".Values.mesh.suffix" . }}
+        exact: /health-{{ .Values.mesh.suffix }}
     rewrite:
       uri: /health        
     route:
