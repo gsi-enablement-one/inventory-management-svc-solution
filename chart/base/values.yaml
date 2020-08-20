@@ -8,6 +8,7 @@ logLevel: "INFO"
 
 mesh: 
   enabled: true
+  suffix: svc
 
 image:
   repository: replace
